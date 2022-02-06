@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import time
 
-FB_ID = "<Email ID>"
-FB_PASSWORD = "<Email PASSWORD>"
+FB_ID = "<EMAIL-ID>"
+FB_PASSWORD = "<PASSWORD>"
 
 chrome_driver_path = r"C:\Users\HP\Desktop\python\chromedriver_win32\chromedriver.exe"
 ser = Service(chrome_driver_path)
@@ -18,7 +18,7 @@ time.sleep(2)
 driver.maximize_window()
 
 login_button = driver.find_element_by_xpath(
-    '//*[@id="q1323319974"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a/span')
+    '//*[@id="q1413092675"]/div/div[1]/div/main/div[1]/div/div/div/div/header/div/div[2]/div[2]/a')
 login_button.click()
 
 time.sleep(4)
@@ -26,15 +26,15 @@ time.sleep(4)
 """Selecting facebook login options"""
 try:
     login_facebook = driver.find_element_by_xpath(
-        '//*[@id="q-405061102"]/div/div/div[1]/div/div[3]/span/div[2]/button/span[2]')
+        '//*[@id="q-315288401"]/div/div/div[1]/div/div[3]/span/div[2]/button')
     login_facebook.click()
 
 except NoSuchElementException:
-    more_option_button = driver.find_element_by_xpath('//*[@id="q-405061102"]/div/div/div[1]/div/div[3]/span/button')
+    more_option_button = driver.find_element_by_xpath('//*[@id="q-315288401"]/div/div/div[1]/div/div[3]/span/button')
     more_option_button.click()
     time.sleep(0.5)
     login_facebook = driver.find_element_by_xpath(
-        '//*[@id="q-405061102"]/div/div/div[1]/div/div[3]/span/div[2]/button/span[2]')
+        '//*[@id="q-315288401"]/div/div/div[1]/div/div[3]/span/div[2]/button')
     login_facebook.click()
 
 time.sleep(2)
@@ -43,7 +43,7 @@ time.sleep(2)
 base_window = driver.window_handles[0]
 facebook_window = driver.window_handles[1]
 driver.switch_to.window(facebook_window)
-# print(driver.title)
+print(driver.title)
 
 """Login using your account details"""
 time.sleep(0.5)
@@ -60,7 +60,7 @@ time.sleep(4)
 
 """Removing all the extra permission popups"""
 try:
-    cookie_button = driver.find_element_by_xpath('//*[@id="q1323319974"]/div/div[2]/div/div/div[1]/button/span')
+    cookie_button = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div/div/div[1]/button')
     cookie_button.click()
 except NoSuchElementException:
     pass
@@ -68,10 +68,10 @@ except NoSuchElementException:
 time.sleep(2)
 
 try:
-    location_allow = driver.find_element_by_xpath('//*[@id="q-405061102"]/div/div/div/div/div[3]/button[1]/span')
+    location_allow = driver.find_element_by_xpath('//*[@id="q-315288401"]/div/div/div/div/div[3]/button[1]')
     location_allow.click()
     time.sleep(0.5)
-    notification_button = driver.find_element_by_xpath('//*[@id="q-405061102"]/div/div/div/div/div[3]/button[2]/span')
+    notification_button = driver.find_element_by_xpath('//*[@id="q-315288401"]/div/div/div/div/div[3]/button[2]')
     notification_button.click()
 except NoSuchElementException:
     pass
@@ -91,4 +91,4 @@ while n > 0:
         # print("skipped")
         time.sleep(2)
 
-driver.quit()
+# driver.quit()
